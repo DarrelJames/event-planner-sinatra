@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use UserController
 use EventController
+use GuestController
 run ApplicationController
