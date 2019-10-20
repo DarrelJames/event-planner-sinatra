@@ -10,7 +10,10 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    
+
   end
 
+  helpers do
+    
+  end
 end
