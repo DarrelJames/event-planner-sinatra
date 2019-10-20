@@ -30,5 +30,17 @@ class EventController < ApplicationController
     erb :"events/show"
   end
 
+  patch '/events/:slug' do
+    event = Event.find_by_slug(params[:slug])
+    event.update(params[:event])
+    redirect to("/events/#{event.slug}/edit")
+  end
+
+  get '/events/:slug/edit' do
+    @event = Event.find_by_slug(params[:slug])
+
+    erb :"events/edit", :layout => :manage
+  end
+
 
 end
