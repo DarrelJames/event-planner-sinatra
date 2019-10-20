@@ -3,7 +3,7 @@ class CreateVenues < ActiveRecord::Migration[6.0]
     create_table :events do |t|
       t.string :name
       t.string :address
-
+      t.belongs_to :venue
     end
   end
 end
