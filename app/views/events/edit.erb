@@ -17,4 +17,9 @@
   <input type="text" name="event[end_time]" value="<%= @event.end_time %>"><br><br>
 
   <input type="submit" value="Update Event">
+
+</form>
+<form class="" action="/events/<%= @event.slug %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Event">
 </form>

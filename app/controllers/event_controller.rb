@@ -32,8 +32,17 @@ class EventController < ApplicationController
 
   patch '/events/:slug' do
     event = Event.find_by_slug(params[:slug])
-    event.update(params[:event])
-    redirect to("/events/#{event.slug}/edit")
+    if event.update(params[:event])
+      redirect to("/events/#{event.slug}/edit")
+    else
+      redirect to("/events/#{event.slug}/edit")
+    end
+  end
+
+  delete '/events/:slug' do
+    event = Event.find_by_slug(params[:slug])
+    event.destroy
+    redirect to("/users")
   end
 
   get '/events/:slug/edit' do
