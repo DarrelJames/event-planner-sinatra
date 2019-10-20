@@ -19,9 +19,16 @@ class EventController < ApplicationController
     end
   end
 
+  get '/events/:slug/manage' do
+    @event = Event.find_by_slug(params[:slug])
+    erb :"events/pages"
+  end
+
   get '/events/:slug' do
     @event = Event.find_by_slug(params[:slug])
+
     erb :"events/show"
   end
+
 
 end
