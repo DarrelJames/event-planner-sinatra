@@ -20,7 +20,7 @@ class EventController < ApplicationController
   end
 
   get '/events/:slug' do
-
+    @event = Event.find_by_slug(params[:slug])
     erb :"events/show"
   end
 
