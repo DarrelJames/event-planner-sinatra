@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_072316) do
+ActiveRecord::Schema.define(version: 2019_10_20_041148) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -38,8 +38,6 @@ ActiveRecord::Schema.define(version: 2019_10_20_072316) do
   create_table "venues", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.integer "event_id"
-    t.index ["event_id"], name: "index_venues_on_event_id"
   end
 
 end
