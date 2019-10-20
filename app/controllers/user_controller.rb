@@ -17,7 +17,21 @@ class UserController < ApplicationController
   end
 
   get '/users' do
-
+    redirect_if_not_logged_in
     erb :"/users/index"
+  end
+
+  get '/login' do
+    erb :"users/login"
+  end
+
+  post '/login' do
+    user = User.find_by(email: params[:email])
+
+    if user && user.authenticate(params[:password])
+      redirect to('/users')
+    else
+      redirect to('/')
+    end
   end
 end
