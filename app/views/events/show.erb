@@ -1,1 +1,7 @@
-show erb
+<section>
+  <h1><%= @event.name %></h1>
+</section>
+<section>
+  <%= @event.date %>
+  <a href="/venues/<%= @event.venue.slug %>"><%= @event.venue.name %></a>
+</section>
