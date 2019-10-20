@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,34 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191020041148) do
+ActiveRecord::Schema.define(version: 2019_10_20_041148) do
 
   create_table "events", force: :cascade do |t|
-    t.string   "name"
+    t.string "name"
     t.datetime "event_date"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer  "user_id"
-    t.integer  "venue_id"
+    t.integer "user_id"
+    t.integer "venue_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
   create_table "guests", force: :cascade do |t|
-    t.string  "name"
+    t.string "name"
     t.integer "event_id"
     t.boolean "rsvp"
+    t.index ["event_id"], name: "index_guests_on_event_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string "email"
+    t.string "password_digest"
   end
 
   create_table "venues", force: :cascade do |t|
-    t.string  "name"
-    t.string  "address"
+    t.string "name"
+    t.string "address"
     t.integer "event_id"
+    t.index ["event_id"], name: "index_venues_on_event_id"
   end
 
 end
