@@ -1,1 +1,17 @@
-new.erb
+<h1>Create Event</h1>
+
+<form action="/events" method="post">
+  <label for="name">Name</label>
+  <input type="text" name="name"><br>
+
+  <label for="date">Date</label>
+  <input type="text" name="event_date"><br>
+
+  <label for="start_time">Start Time</label>
+  <input type="text" name="start_time"><br>
+
+  <label for="end_time">End Time</label>
+  <input type="text" name="end_time"><br><br>
+
+  <input type="submit" value="Create Event">
+</form>
