@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2019_10_20_041148) do
 
   create_table "guests", force: :cascade do |t|
     t.string "name"
-    t.integer "event_id"
+    t.integer "user_id"
     t.boolean "rsvp"
-    t.index ["event_id"], name: "index_guests_on_event_id"
+    t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
