@@ -31,7 +31,12 @@ class UserController < ApplicationController
     if user && user.authenticate(params[:password])
       redirect to('/users')
     else
-      redirect to('/')
+      redirect to('/login')
     end
+  end
+
+  post '/logout' do
+    session.destroy
+    redirect to('/')
   end
 end
