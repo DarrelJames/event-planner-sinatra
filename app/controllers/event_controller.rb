@@ -1,5 +1,9 @@
 class EventController < ApplicationController
 
+  get '/events' do
+    erb :"events/index"
+  end
+
   get '/events/new' do
     redirect_if_not_logged_in
     erb :"events/new"

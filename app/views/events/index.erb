@@ -1,0 +1,5 @@
+<ul>
+  <% current_user.events.all.each do |event| %>
+    <li><a href="/events/<%= event.slug %>"><%= event.name %></a></li>
+  <% end %>
+</ul>
