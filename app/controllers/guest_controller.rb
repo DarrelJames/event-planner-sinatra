@@ -28,4 +28,10 @@ class GuestController < ApplicationController
     @guest = Guest.find_by_slug(params[:slug])
     erb :"guests/show"
   end
+
+  delete '/guests/:slug' do
+    guest = Guest.find_by_slug(params[:slug])
+    guest.destroy
+    redirect to("/guests")
+  end
 end
