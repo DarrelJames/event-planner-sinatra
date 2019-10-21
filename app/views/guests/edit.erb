@@ -4,13 +4,19 @@
   <label for="name">Name</label>
   <input type="text" name="guest[name]" id="name" value="<%= @guest.name %>">
 
-  <h3>Events</h3>
+  <h3>Events Invited To</h3>
 
   <% @guest.events.each do |event| %>
     <input type="checkbox" name="guest[event_ids][]" id="<%= event.id %>" value="<%= event.id %>" <%= "checked" if current_user.events.include?(event) %>><%= event.name %></input>
   <% end %>
   <br><br>
 
-  <input type="submit" value="Add Guest">
-  <button type="button" name="button" onclick="window.location.href = '/guests';">Back</button>
+  <input type="submit" value="Edit Guest">
+
 </form>
+
+<form class="" action="/guests/<%= @guest.slug %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Guest">
+</form>
+<button type="button" name="button" onclick="window.location.href = '/guests';">Back</button>
