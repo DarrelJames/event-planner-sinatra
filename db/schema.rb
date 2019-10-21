@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2019_10_20_234303) do
     t.string "event_date"
     t.string "start_time"
     t.string "end_time"
-    t.boolean "rsvp"
     t.integer "user_id"
     t.integer "venue_id"
     t.index ["user_id"], name: "index_events_on_user_id"
@@ -34,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_234303) do
   create_table "guests", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
+    t.boolean "rsvp"
     t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
