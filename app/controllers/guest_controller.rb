@@ -5,9 +5,9 @@ class GuestController < ApplicationController
     erb :"guests/new"
   end
 
-  get '/guests/edit' do
+  get '/guests/:slug/edit' do
     redirect_if_not_logged_in
-
+    @guest = Guest.find_by_slug(params[:slug])
     erb :"guests/edit"
   end
 
