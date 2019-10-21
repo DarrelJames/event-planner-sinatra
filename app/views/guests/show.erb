@@ -1,6 +1,13 @@
 <h1><%= @guest.name %></h1>
 
 <h3>Events Attending</h3>
+<br>
+
+<ul>
+  <% @guest.events.each do |event| %>
+    <li><%= event.name %></li><br>
+  <% end %>
+</ul>
 
 <button type="button" name="button" onclick="window.location.href = '/guests/<%= @guest.slug %>/edit';">Edit</button>
 <button type="button" name="button" onclick="window.location.href = '/guests';">Back</button>
