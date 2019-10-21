@@ -1,11 +1,13 @@
 class GuestController < ApplicationController
 
   get '/guests/new' do
+    redirect_if_not_logged_in
     erb :"guests/new"
   end
 
   get '/guests' do
-    erb :index
+    redirect_if_not_logged_in
+    erb :"guests/index"
   end
 
   post '/guests' do

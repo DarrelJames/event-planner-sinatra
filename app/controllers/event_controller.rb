@@ -1,6 +1,7 @@
 class EventController < ApplicationController
 
   get '/events' do
+    redirect_if_not_logged_in
     erb :"events/index"
   end
 
@@ -46,6 +47,7 @@ class EventController < ApplicationController
   end
 
   get '/events/:slug/edit' do
+    redirect_if_not_logged_in
     @event = Event.find_by_slug(params[:slug])
 
     erb :"events/edit", :layout => :manage
