@@ -22,7 +22,9 @@ Have User, Event, Venue, Guest models
 
 validates_uniqueness_of :email
 
-- [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+- [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+1. Events can CRUD
+2. Guests can CRUD
 - [ ] Ensure that users can't modify content created by other users
 - [ ] Include user input validations
 - [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
