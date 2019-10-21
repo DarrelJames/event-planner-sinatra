@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :event_date
       t.string :start_time
       t.string :end_time
+      t.boolean :rsvp
       t.belongs_to :user
       t.belongs_to :venue
     end
