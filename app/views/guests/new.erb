@@ -1,0 +1,12 @@
+<h1>Add Guest to your Guestlist</h1>
+<form class="" action="/guests" method="post">
+  <label for="name">Name</label>
+  <input type="text" name="guest[name]" id="name">
+  <h3>Events</h3>
+  <% current_user.events.each do |event| %>
+    <input type="checkbox" name="guest[event_ids][]" id="<%= event.id %>" value="<%= event.id %>"><%= event.name %></input>
+  <% end %>
+  <br><br>
+  <input type="submit" value="Add Guest">
+  <button type="button" name="button" onclick="window.location.href = '/guests';">Back</button>
+</form>
