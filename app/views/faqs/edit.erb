@@ -1,0 +1,17 @@
+<h1>Edit FAQ</h1>
+<form action="/faqs" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="question">Question</label>
+  <input type="text" name="faq[question]" value="<%= faq.question %>"><br>
+
+  <label for="answer">Answer</label>
+  <input type="text" name="faq[answer]" value="<%= faq.answer %>"><br><br>
+
+  <input type="submit" value="Create FAQ">
+</form>
+
+<form class="" action="/faqs/<%= @faq.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Event">
+</form>
