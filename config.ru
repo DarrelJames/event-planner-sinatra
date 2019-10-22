@@ -10,4 +10,5 @@ use EventController
 use GuestController
 use VenueController
 use FaqController
+use WebsiteController
 run ApplicationController
