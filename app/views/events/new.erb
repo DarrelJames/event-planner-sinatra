@@ -2,16 +2,36 @@
 
 <form action="/events" method="post">
   <label for="name">Name</label>
-  <input type="text" name="name"><br>
+  <input type="text" name="event[name]"><br>
 
   <label for="date">Date</label>
-  <input type="date" name="event_date"><br>
+  <input type="date" name="event[event_date]"><br>
 
   <label for="start_time">Start Time</label>
-  <input type="text" name="start_time"><br>
+  <input type="text" name="event[start_time]"><br>
 
   <label for="end_time">End Time</label>
-  <input type="text" name="end_time"><br><br>
+  <input type="text" name="event[end_time]"><br><br>
+
+  <h3>Venue</h3>
+
+  <label for="venue_name">Name</label>
+  <input type="text" name="venue[name]"><br>
+
+  <label for="address">Address</label>
+  <input type="text" name="venue[address]"><br>
+
+  <label for="city">City</label>
+  <input type="text" name="venue[city]"><br>
+
+  <label for="state">State</label>
+  <input type="text" name="venue[state]"><br>
+
+  <label for="zipcode">Zip Code</label>
+  <input type="text" name="venue[zip_code]"><br><br>
+
+
+
 
   <input type="submit" value="Create Event">
 </form>
