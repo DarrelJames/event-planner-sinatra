@@ -2,7 +2,7 @@ class EventController < ApplicationController
 
   get '/events' do
     redirect_if_not_logged_in
-    erb :"events/index"
+    erb :"events/index", :layout => :manage
   end
 
   get '/events/new' do
@@ -27,12 +27,11 @@ class EventController < ApplicationController
     erb :"events/manage"
   end
 
-  get '/events/:slug' do
-    @event = Event.find_by_slug(params[:slug])
-
-    
-    erb :"events/show"
-  end
+  # get '/events/:slug' do
+  #   @event = Event.find_by_slug(params[:slug])
+  #
+  #   erb :"events/show"
+  # end
 
   patch '/events/:slug' do
     event = Event.find_by_slug(params[:slug])
@@ -46,6 +45,7 @@ class EventController < ApplicationController
   delete '/events/:slug' do
     event = Event.find_by_slug(params[:slug])
     event.destroy
+
     redirect to("/users")
   end
 
@@ -53,7 +53,7 @@ class EventController < ApplicationController
     redirect_if_not_logged_in
     @event = Event.find_by_slug(params[:slug])
 
-    erb :"events/edit", :layout => :manage
+    erb :"events/edit"
   end
 
 
