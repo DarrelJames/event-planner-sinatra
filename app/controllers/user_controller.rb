@@ -27,7 +27,7 @@ class UserController < ApplicationController
 
   post '/login' do
     user = User.find_by(email: params[:email])
-    
+
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect to('/users')
@@ -36,7 +36,7 @@ class UserController < ApplicationController
     end
   end
 
-  post '/logout' do
+  get '/logout' do
     session.destroy
     redirect to('/')
   end
