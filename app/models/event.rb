@@ -4,7 +4,10 @@ class Event < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :venue
-  has_and_belongs_to_many :guests
+
+  has_many :invitations, dependent: :destroy
+  has_many :guests, through: :invitations
+
   has_many :faqs, dependent: :destroy
 
   validates :name, presence: true

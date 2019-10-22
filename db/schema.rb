@@ -23,13 +23,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_012225) do
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
-  create_table "events_guests", id: false, force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "guest_id"
-    t.index ["event_id"], name: "index_events_guests_on_event_id"
-    t.index ["guest_id"], name: "index_events_guests_on_guest_id"
-  end
-
   create_table "faqs", force: :cascade do |t|
     t.string "question"
     t.string "answer"
@@ -41,6 +34,14 @@ ActiveRecord::Schema.define(version: 2019_10_22_012225) do
     t.string "name"
     t.integer "user_id"
     t.index ["user_id"], name: "index_guests_on_user_id"
+  end
+
+  create_table "invitations", id: false, force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "guest_id"
+    t.boolean "attending"
+    t.index ["event_id"], name: "index_invitations_on_event_id"
+    t.index ["guest_id"], name: "index_invitations_on_guest_id"
   end
 
   create_table "users", force: :cascade do |t|
