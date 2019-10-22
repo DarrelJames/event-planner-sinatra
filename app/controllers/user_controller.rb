@@ -18,7 +18,7 @@ class UserController < ApplicationController
 
   get '/users' do
     redirect_if_not_logged_in
-    erb :"/users/index"
+    erb :"/users/index", :layout => :manage
   end
 
   get '/login' do

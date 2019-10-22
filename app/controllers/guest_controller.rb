@@ -2,18 +2,18 @@ class GuestController < ApplicationController
 
   get '/guests/new' do
     redirect_if_not_logged_in
-    erb :"guests/new"
+    erb :"guests/new", :layout => :manage
   end
 
   get '/guests/:id/edit' do
     redirect_if_not_logged_in
     @guest = Guest.find_by(id: params[:id])
-    erb :"guests/edit"
+    erb :"guests/edit", :layout => :manage
   end
 
   get '/guests' do
     redirect_if_not_logged_in
-    erb :"guests/index"
+    erb :"guests/index", :layout => :manage
   end
 
   post '/guests' do
@@ -26,7 +26,7 @@ class GuestController < ApplicationController
   get '/guests/:id' do
     redirect_if_not_logged_in
     @guest = Guest.find_by(id: params[:id])
-    erb :"guests/show"
+    erb :"guests/show", :layout => :manage
   end
 
   patch '/guests/:id' do
