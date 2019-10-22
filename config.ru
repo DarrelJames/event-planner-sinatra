@@ -8,4 +8,6 @@ use Rack::MethodOverride
 use UserController
 use EventController
 use GuestController
+use VenueController
+use FaqController
 run ApplicationController
