@@ -29,6 +29,17 @@ class VenueController < ApplicationController
     erb :"venues/show"
   end
 
+  patch '/venues/:id' do
+    venue = Venue.find_by(id: params[:id])
+    if venue.update(params[:venue])
+      redirect to("/venues/#{venue.id}/edit")
+    else
+      #flash message Edit Uncessessful
+      redirect to("/venues/#{venue.id}/edit")
+    end
+  end
+
+
   delete '/venues/:id' do
     venue = Venue.find_by(id: params[:id])
     venue.destroy
