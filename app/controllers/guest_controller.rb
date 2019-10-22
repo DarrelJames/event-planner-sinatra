@@ -5,9 +5,9 @@ class GuestController < ApplicationController
     erb :"guests/new"
   end
 
-  get '/guests/:slug/edit' do
+  get '/guests/:id/edit' do
     redirect_if_not_logged_in
-    @guest = Guest.find_by_slug(params[:slug])
+    @guest = Guest.find_by(id: params[:id])
     erb :"guests/edit"
   end
 
@@ -23,14 +23,25 @@ class GuestController < ApplicationController
     end
   end
 
-  get '/guests/:slug' do
+  get '/guests/:id' do
     redirect_if_not_logged_in
-    @guest = Guest.find_by_slug(params[:slug])
+    @guest = Guest.find_by(id: params[:id])
     erb :"guests/show"
   end
 
-  delete '/guests/:slug' do
-    guest = Guest.find_by_slug(params[:slug])
+  patch '/guests/:id' do
+    guest = Guest.find_by(id: params[:id])
+
+    if guest.update(params[:guest])
+      redirect to("/guests")
+    else
+      #flash message unable to edit
+      redirect to("/guests/#{guest.id}/edit")
+    end
+  end
+
+  delete '/guests/:id' do
+    guest = Guest.find_by(id: params[:id])
     guest.destroy
     redirect to("/guests")
   end
