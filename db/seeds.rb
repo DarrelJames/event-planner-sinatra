@@ -9,9 +9,17 @@ event4 = user2.events.create(name: "User2 Event2", event_date: "10/10/10", start
 event5 = user3.events.create(name: "User3 Event1", event_date: "10/10/10", start_time: "10", end_time: "12")
 event6 = user3.events.create(name: "User3 Event2", event_date: "10/10/10", start_time: "10", end_time: "12")
 
-event1.create_venue(name: "venue1", address: "san jose, ca")
-event2.create_venue(name: "venue1", address: "san jose, ca")
-event3.create_venue(name: "venue1", address: "san jose, ca")
-event4.create_venue(name: "venue1", address: "san jose, ca")
-event5.create_venue(name: "venue1", address: "san jose, ca")
-event6.create_venue(name: "venue1", address: "san jose, ca")
+event1.create_venue(name: "venue1", address: "san jose, ca", city: "san jose", state: "ca", zip_code: "95132")
+event2.create_venue(name: "venue3", address: "san jose, ca", city: "milpitas", state: "ca", zip_code: "95132")
+event3.create_venue(name: "venue4", address: "san jose, ca", city: "fremont", state: "ca", zip_code: "95132")
+event4.create_venue(name: "venue2", address: "san jose, ca", city: "san jose", state: "ca", zip_code: "95132")
+event5.create_venue(name: "venue1", address: "san jose, ca", city: "san jose", state: "ca", zip_code: "95132")
+event6.create_venue(name: "venue1", address: "san jose, ca", city: "san jose", state: "ca", zip_code: "95132")
+
+
+event1.faqs.create(question: "Where", answer: "san jose")
+event1.faqs.create(question: "when", answer: "tomorrow")
+event1.faqs.create(question: "why", answer: "why")
+event2.faqs.create(question: "Where", answer: "san jose")
+event2.faqs.create(question: "when", answer: "tomorrow")
+event2.faqs.create(question: "why", answer: "why")
