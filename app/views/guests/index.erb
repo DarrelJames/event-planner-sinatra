@@ -2,7 +2,7 @@
 <a href="/guests/new">Add Guest</a>
 <ul>
 <% current_user.guests.each do |guest| %>
-     <li><a href="/guests/<%= guest.slug %>"><%= guest.name %></a></li>
+     <li><a href="/guests/<%= guest.id %>"><%= guest.name %></a></li>
 
 <% end %>
 </ul>
