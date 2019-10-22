@@ -23,8 +23,7 @@ class VenueController < ApplicationController
     end
   end
 
-  get '/venues/:id' do
-    redirect_if_not_logged_in
+  get '/venues/:id' do    
     @venue = Venue.find_by(id: params[:id])
     erb :"venues/show"
   end
