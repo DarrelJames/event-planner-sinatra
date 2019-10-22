@@ -1,0 +1,28 @@
+<h1><%= @venue.name %></h1>
+<h3>Edit Venue</h3>
+
+<form action="/venues/<%= @venue.id %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="name">Name</label>
+  <input type="text" name="venue[name]" value="<%= @venue.name %>"><br>
+
+  <label for="date">Address</label>
+  <input type="date" name="venue[address]" value="<%= @venue.address %>"><br>
+
+  <label for="city">City</label>
+  <input type="text" name="venue[city]" value="<%= @venue.city %>"><br>
+
+  <label for="state">State</label>
+  <input type="text" name="venue[state]" value="<%= @venue.state %>"><br>
+
+  <label for="zip_code">Zip Code</label>
+  <input type="text" name="venue[zip_code]" value="<%= @venue.zip_code %>"><br><br>
+
+  <input type="submit" value="Update Venue">
+</form>
+
+<form class="" action="/venues/<%= @venue.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Venue">
+</form>

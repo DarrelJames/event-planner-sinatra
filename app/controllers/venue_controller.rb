@@ -7,7 +7,7 @@ class VenueController < ApplicationController
 
   get '/venues/:id/edit' do
     redirect_if_not_logged_in
-    @venue = Venue.find_by(id: params[:slug])
+    @venue = Venue.find_by(id: params[:id])
     erb :"venues/edit"
   end
 
@@ -25,12 +25,12 @@ class VenueController < ApplicationController
 
   get '/venues/:id' do
     redirect_if_not_logged_in
-    @venue = Venue.find_by(id: params[:slug])
+    @venue = Venue.find_by(id: params[:id])
     erb :"venues/show"
   end
 
   delete '/venues/:id' do
-    venue = Venue.find_by(id: params[:slug])
+    venue = Venue.find_by(id: params[:id])
     venue.destroy
     redirect to("/venues")
   end
