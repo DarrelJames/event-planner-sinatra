@@ -11,10 +11,10 @@ class EventController < ApplicationController
   end
 
   post '/events' do
-    event = current_user.events.build(params)
-
+    event = current_user.events.build(params[:event])
+    event.build_venue(params[:venue])
     if event.save
-      redirect to("/events/#{event.name}")
+      redirect to("/events/#{event.slug}/manage")
     else
       redirect to('/events/new')
     end
@@ -22,6 +22,7 @@ class EventController < ApplicationController
 
   get '/events/:slug/manage' do
     @event = Event.find_by_slug(params[:slug])
+
     erb :"events/pages"
   end
 
