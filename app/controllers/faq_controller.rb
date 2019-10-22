@@ -7,7 +7,7 @@ class FaqController < ApplicationController
 
   get '/faqs/:id/edit' do
     redirect_if_not_logged_in
-    @faq = Faq.find_by(id: params[:slug])
+    @faq = Faq.find_by(id: params[:id])
     erb :"faqs/edit"
   end
 
@@ -25,12 +25,12 @@ class FaqController < ApplicationController
 
   get '/faqs/:id' do
     redirect_if_not_logged_in
-    @faq = Faq.find_by(id: params[:slug])
+    @faq = Faq.find_by(id: params[:id])
     erb :"faqs/show"
   end
 
   delete '/faqs/:id' do
-    faq = Faq.find_by(id: params[:slug])
+    faq = Faq.find_by(id: params[:id])
     faq.destroy
     redirect to("/faqs")
   end
