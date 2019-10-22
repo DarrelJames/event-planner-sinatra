@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_012225) do
     t.string "event_date"
     t.string "start_time"
     t.string "end_time"
-    t.boolean "rsvp"
     t.integer "user_id"
     t.integer "venue_id"
     t.index ["user_id"], name: "index_events_on_user_id"
