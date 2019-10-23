@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :venue
 
-  has_many :invitations, dependent: :destroy
+  has_many :invitations
   has_many :guests, through: :invitations
 
   has_many :faqs, dependent: :destroy
