@@ -25,13 +25,16 @@ validates_uniqueness_of :email
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 1. Events can CRUD
 2. Guests can CRUD
-- [ ] Ensure that users can't modify content created by other users
+- [x] Ensure that users can't modify content created by other users
+Users are redirected to their homepage if they try to edit a page that's not theirs
 - [x] Include user input validations
 1. Can't create user without Email or Password
 2. Can't Create Event with out event name
 
-- [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
+Used sinatra-flash to create flash messages and display validation failures
+
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [x] You have a large number of small Git commits
