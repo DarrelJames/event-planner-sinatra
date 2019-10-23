@@ -26,6 +26,9 @@
         <%= yield %>
 
       <footer class="branding">
+        <% if logged_in? %>
+          <a href="/users">Edit Website</a><br>
+        <% end %>
         <small>&copy; 2019 <strong>EventPlanner</strong></small>
       </footer>
     </div>
