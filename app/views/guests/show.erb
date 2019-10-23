@@ -1,5 +1,7 @@
 <h1><%= @guest.name %></h1>
-
+<%if flash[:message] %>
+  <strong><%= flash[:message] %></strong><br><br>
+<% end %>
 <h3>Events Attending</h3>
 <br>
 

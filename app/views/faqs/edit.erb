@@ -1,4 +1,7 @@
 <h1>Edit FAQ</h1>
+<%if flash[:message] %>
+  <strong><%= flash[:message] %></strong><br><br>
+<% end %>
 <form action="/faqs" method="post">
   <input type="hidden" name="_method" value="PATCH">
 

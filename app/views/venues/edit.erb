@@ -1,6 +1,8 @@
 <h1><%= @venue.name %></h1>
 <h3>Edit Venue</h3>
-
+<%if flash[:message] %>
+  <strong><%= flash[:message] %></strong><br><br>
+<% end %>
 <form action="/venues/<%= @venue.id %>" method="post">
   <input type="hidden" name="_method" value="PATCH">
 

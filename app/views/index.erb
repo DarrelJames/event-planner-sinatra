@@ -1,4 +1,7 @@
 <h1>Welcome to Event Planner</h1>
+<%if flash[:message] %>
+  <strong><%= flash[:message] %></strong><br><br>
+<% end %>
 <h5>Sign up to get started or <a href="/login">Click Here Log In</a> </h3>
 
 <form class="" action="/signup" method="post">

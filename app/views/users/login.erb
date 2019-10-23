@@ -1,5 +1,7 @@
 <h1>Log In To Event Planner</h1>
-
+<%if flash[:message] %>
+  <strong><%= flash[:message] %></strong><br><br>
+<% end %>
 <form class="" action="/login" method="post">
   <label for="email">Enter Email Address</label>
   <input type="text" name="email" id="email">

@@ -1,4 +1,7 @@
 <h1>Edit Guest</h1>
+<%if flash[:message] %>
+  <strong><%= flash[:message] %></strong><br><br>
+<% end %>
 <form class="" action="/guests" method="post">
   <input type="hidden" name="_method" value="PATCH">
   <label for="name">Name</label>

@@ -1,4 +1,7 @@
 <h1>Add Guest to your Guestlist</h1>
+<%if flash[:message] %>
+  <strong><%= flash[:message] %></strong><br><br>
+<% end %>
 <form class="" action="/guests" method="post">
   <label for="name">Name</label>
   <input type="text" name="guest[name]" id="name">

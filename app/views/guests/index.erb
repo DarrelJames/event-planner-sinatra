@@ -1,15 +1,24 @@
 <h1>Your Guestlist</h1>
 <a href="/guests/new">Add Guest</a><br><br>
+<%if flash[:message] %>
+  <strong><%= flash[:message] %></strong><br><br>
+<% end %>
 
 
+<div class="">
+  <div class="">Name</div>
+  <% current_user.events.each do |event| %>
+    <div class=""><%= event.name %></div>
+  <% end %>
 
 
+</div>
 <% current_user.guests.each do |guest| %>
   <ul>
      <li><a href="/guests/<%= guest.id %>"><%= guest.name %></a></li><br>
 
       <% guest.events.each do |event| %>
-        <li><a href="/events/<%= event.slug %>"><%= event.name %></a></li><br>
+
       <% end %>
   </ul>
 <% end %>

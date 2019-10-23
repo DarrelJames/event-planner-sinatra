@@ -1,1 +1,5 @@
-<h1>You are logged in as <%= current_user.email %></h1>
+<h1>You are logged in as <%= current_user.email %></h1><br>
+
+<%if flash[:message] %>
+  <strong><%= flash[:message] %></strong>
+<% end %>
