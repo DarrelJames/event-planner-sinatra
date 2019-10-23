@@ -1,5 +1,8 @@
 <h1>Create Event</h1>
-
+<% if flash[:message] %>
+  <strong><%= flash[:message] %></strong>
+  <br><br>
+<% end %>
 <form action="/events" method="post">
   <label for="name">Name</label>
   <input type="text" name="event[name]"><br>

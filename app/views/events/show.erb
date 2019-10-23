@@ -1,5 +1,9 @@
 <section>
   <h1><%= @event.name %></h1>
+  <% if flash[:message] %>
+    <strong><%= flash[:message] %></strong>
+    <br><br>
+  <% end %>
 </section>
 <section>
 

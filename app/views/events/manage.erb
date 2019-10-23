@@ -1,4 +1,8 @@
 <h1><%= @event.name %></h1>
+<% if flash[:message] %>
+  <strong><%= flash[:message] %></strong>
+  <br><br>
+<% end %>
 <a href="/events/<%= @event.slug %>/edit">Edit Event Name</a>
 <a href="/guests">Guestlist</a>
 <a href="/venues/<%= @event.venue.id %>/edit">Change Venue</a>

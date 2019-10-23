@@ -1,4 +1,9 @@
 <h1>Your Events</h1>
+<h3>Click Event Name To Edit</h3>
+<% if flash[:message] %>
+  <strong><%= flash[:message] %></strong>
+  <br><br>
+<% end %>
 <ul>
   <% current_user.events.all.each do |event| %>
     <li><a href="/events/<%= event.slug %>/manage"><%= event.name %></a></li>

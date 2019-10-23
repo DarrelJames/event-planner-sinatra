@@ -16,6 +16,7 @@ class EventController < ApplicationController
     if event.save
       redirect to("/events/#{event.slug}/manage")
     else
+      flash[:message] = event.errors.full_messages.to_sentence
       redirect to('/events/new')
     end
   end
@@ -38,6 +39,7 @@ class EventController < ApplicationController
     if event.update(params[:event])
       redirect to("/events/#{event.slug}/edit")
     else
+      flash[:message] = event.errors.full_messages.to_sentence
       redirect to("/events/#{event.slug}/edit")
     end
   end
@@ -45,7 +47,7 @@ class EventController < ApplicationController
   delete '/events/:slug' do
     event = Event.find_by_slug(params[:slug])
     event.destroy
-
+    flash[:message] = "Successfully Deleted Event"
     redirect to("/users")
   end
 
