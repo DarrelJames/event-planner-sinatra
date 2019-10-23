@@ -9,8 +9,8 @@
   <label for="name">Name</label>
   <input type="text" name="venue[name]" value="<%= @venue.name %>"><br>
 
-  <label for="date">Address</label>
-  <input type="date" name="venue[address]" value="<%= @venue.address %>"><br>
+  <label for="address">Address</label>
+  <input type="address" name="venue[address]" value="<%= @venue.address %>"><br>
 
   <label for="city">City</label>
   <input type="text" name="venue[city]" value="<%= @venue.city %>"><br>
@@ -22,9 +22,4 @@
   <input type="text" name="venue[zip_code]" value="<%= @venue.zip_code %>"><br><br>
 
   <input type="submit" value="Update Venue">
-</form>
-
-<form class="" action="/venues/<%= @venue.id %>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Venue">
 </form>
