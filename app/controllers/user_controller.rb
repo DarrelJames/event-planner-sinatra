@@ -12,7 +12,7 @@ class UserController < ApplicationController
       session[:user_id] = user.id
       redirect to('/users')
     else
-      flash[:message] = event.errors.full_messages.to_sentence
+      flash[:message] = user.errors.full_messages.to_sentence
       redirect to('/signup')
     end
   end
@@ -32,8 +32,8 @@ class UserController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect to('/users')
-    else
-      flash[:message] = event.errors.full_messages.to_sentence
+    else      
+      flash[:message] = "Invalid email or Password. Please Try Again"
       redirect to('/login')
     end
   end
