@@ -38,7 +38,7 @@ class GuestController < ApplicationController
     guest = Guest.find_by(id: params[:id])
 
     if guest.update(params[:guest])
-      redirect to("/guests")
+      redirect to("/guests/#{guest.id}")
     else
       #flash message unable to edit
       redirect to("/guests/#{guest.id}/edit")
