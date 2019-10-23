@@ -4,15 +4,6 @@
   <strong><%= flash[:message] %></strong><br><br>
 <% end %>
 
-
-<div class="">
-  <div class="">Name</div>
-  <% current_user.events.each do |event| %>
-    <div class=""><%= event.name %></div>
-  <% end %>
-
-
-</div>
 <% current_user.guests.each do |guest| %>
   <ul>
      <li><a href="/guests/<%= guest.id %>"><%= guest.name %></a></li><br>
