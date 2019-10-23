@@ -3,6 +3,6 @@ class Guest < ActiveRecord::Base
   include Slugify::InstanceMethods
 
   belongs_to :user
-  has_many :invitations
-  has_many :events, through: :invitations
+  has_many :event_guests
+  has_many :events, through: :event_guests
 end
