@@ -23,9 +23,14 @@ class VenueController < ApplicationController
     end
   end
 
-  get '/venues/:id' do    
+  get '/venues/:id' do
     @venue = Venue.find_by(id: params[:id])
-    erb :"venues/show"
+    if @venue.event.user == current_user
+      erb :"venues/show"
+    else
+      flash[:message] = "Sorry you don't have access to that page"
+      redirect to("/users")
+    end
   end
 
   patch '/venues/:id' do
@@ -41,7 +46,12 @@ class VenueController < ApplicationController
 
   delete '/venues/:id' do
     venue = Venue.find_by(id: params[:id])
-    venue.destroy
-    redirect to("/venues")
+    if venue.event.user == current_user
+      venue.destroy
+      redirect to("/venues")
+    else
+      flash[:message] = "Sorry you don't have access to that page"
+      redirect to("/users")
+    end
   end
 end

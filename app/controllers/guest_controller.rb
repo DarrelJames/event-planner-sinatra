@@ -8,7 +8,12 @@ class GuestController < ApplicationController
   get '/guests/:id/edit' do
     redirect_if_not_logged_in
     @guest = Guest.find_by(id: params[:id])
-    erb :"guests/edit", :layout => :manage
+    if @guest.user == current_user
+      erb :"guests/edit", :layout => :manage
+    else
+      flash[:message] = "Sorry you don't have access to that page"
+      redirect to("/users")
+    end
   end
 
   get '/guests' do
@@ -42,7 +47,12 @@ class GuestController < ApplicationController
 
   delete '/guests/:id' do
     guest = Guest.find_by(id: params[:id])
-    guest.destroy
-    redirect to("/guests")
+    if guest.user == current_user
+      guest.destroy
+      redirect to("/guests")
+    else
+      flash[:message] = "Sorry you don't have access to that page"
+      redirect to("/users")
+    end
   end
 end

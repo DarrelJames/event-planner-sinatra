@@ -12,6 +12,7 @@ class UserController < ApplicationController
       session[:user_id] = user.id
       redirect to('/users')
     else
+      flash[:message] = event.errors.full_messages.to_sentence
       redirect to('/signup')
     end
   end
@@ -32,12 +33,14 @@ class UserController < ApplicationController
       session[:user_id] = user.id
       redirect to('/users')
     else
+      flash[:message] = event.errors.full_messages.to_sentence
       redirect to('/login')
     end
   end
 
   get '/logout' do
     session.destroy
+    flash[:message] = "Successfully logged out"
     redirect to('/')
   end
 end

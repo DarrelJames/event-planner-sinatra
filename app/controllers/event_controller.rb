@@ -36,26 +36,37 @@ class EventController < ApplicationController
 
   patch '/events/:slug' do
     event = Event.find_by_slug(params[:slug])
+
     if event.update(params[:event])
       redirect to("/events/#{event.slug}/edit")
     else
       flash[:message] = event.errors.full_messages.to_sentence
       redirect to("/events/#{event.slug}/edit")
     end
+
   end
 
   delete '/events/:slug' do
     event = Event.find_by_slug(params[:slug])
-    event.destroy
-    flash[:message] = "Successfully Deleted Event"
-    redirect to("/users")
+    if event.user == current_user
+      event.destroy
+      flash[:message] = "Successfully Deleted Event"
+      redirect to("/users")
+    else
+      flash[:message] = "Sorry you don't have access to that page"
+      redirect to("/users")
+    end
   end
 
   get '/events/:slug/edit' do
     redirect_if_not_logged_in
     @event = Event.find_by_slug(params[:slug])
-
-    erb :"events/edit"
+    if @event.user == current_user
+      erb :"events/edit"
+    else
+      flash[:message] = "Sorry you don't have access to that page"
+      redirect to("/users")
+    end
   end
 
 
