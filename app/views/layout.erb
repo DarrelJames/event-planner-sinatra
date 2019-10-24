@@ -21,10 +21,12 @@
       <nav>
         <a href="/">Home</a>
         <% if @event %>
-        
+
         <a href="/events/<%= @event.slug %>">View Website</a>
         <% end %>
+        <% if logged_in? %>
         <a href="/logout" style="float:right">Logout</a>
+        <% end %>
       </nav>
         <%= yield %>
 
