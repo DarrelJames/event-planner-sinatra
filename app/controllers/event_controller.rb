@@ -12,11 +12,14 @@ class EventController < ApplicationController
 
   post '/events' do
     event = current_user.events.build(params[:event])
-    event.build_venue(params[:venue])
-    if event.save
+    venue = Venue.new(params[:venue])
+    event.venue = venue
+    
+    if venue.save && event.save
+      binding.pry
       redirect to("/events/#{event.slug}/manage")
     else
-      flash[:message] = event.errors.full_messages.to_sentence
+      flash[:message] = event.errors.full_messages.to_sentence + venue.errors.full_messages.to_sentence
       redirect to('/events/new')
     end
   end
