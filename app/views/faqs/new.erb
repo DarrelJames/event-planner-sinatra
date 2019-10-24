@@ -9,5 +9,13 @@
   <label for="answer">Answer</label>
   <input type="text" name="faq[answer]"><br><br>
 
+  <% current_user.events.each do |event| %>
+    <select name="faq[event_id]">
+      <option value="<%= event.id %>">
+        <%= event.name %>
+      </option>
+    </select>
+  <% end %>
+<br><br>
   <input type="submit" value="Create FAQ">
 </form>
