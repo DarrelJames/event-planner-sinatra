@@ -17,9 +17,12 @@ class FaqController < ApplicationController
   end
 
   post '/faqs' do
-    faq = current_user.faqs.build(params[:faq])
+    faq = current_user.events.faqs.build(params[:faq])
     if faq.save
       redirect to("/faqs")
+    else
+      flash[:message] = faq.errors.full_messages.to_sentence
+      redirect to("/faqs/new")
     end
   end
 
