@@ -14,9 +14,8 @@ class EventController < ApplicationController
     event = current_user.events.build(params[:event])
     venue = Venue.new(params[:venue])
     event.venue = venue
-    
+
     if venue.save && event.save
-      binding.pry
       redirect to("/events/#{event.slug}/manage")
     else
       flash[:message] = event.errors.full_messages.to_sentence + venue.errors.full_messages.to_sentence
