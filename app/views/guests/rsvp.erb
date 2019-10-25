@@ -1,4 +1,17 @@
-<form class="" action="/events/:slug/rsvp" method="post">
-  <input type="radio" name="attending" id="">Attending</input>
-  <input type="radio" name="attending" id="">Not Attending</input>
+<h3>Hi, Guest</h3>
+
+<% if session[:guest_id] %>
+<div>
+  RSVP
+  <form class="" action="/events/:slug/rsvp" method="post">
+    <input type="radio" name="attending" id="">Attending</input>
+    <input type="radio" name="attending" id="">Not Attending</input><br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+<% else %>
+Please Enter your name
+<form class="" action="/events/:slug/guest" method="post">
+  <input type="text" name="name" id=""> <input type="submit" value="Submit">
 </form>
+<% end %>
