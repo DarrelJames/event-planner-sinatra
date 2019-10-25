@@ -12,11 +12,11 @@ user3 = User.create(email: "user3@email.com", password: "password")
 
 User.all.each do |user|
 
-  event_per_user = Faker::Number.number(digits: 2).to_i
+  # event_per_user = Faker::Number.number(digits: 2).to_i
 
   puts "Adding #{event_per_user} events to user #{user.email}."
 
-  event_per_user.times do
+  5.times do
     venue = Venue.create(name: Faker::WorldCup.stadium, address: Faker::Address.street_name, city: Faker::Address.city, state: Faker::Address.state, zip_code: Faker::Address.zip)
 
     event = user.events.create(name: Faker::FunnyName.two_word_name, event_date: Faker::Date.forward(days: 23), venue: venue)

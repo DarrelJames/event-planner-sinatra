@@ -1,4 +1,4 @@
-class EventGuest < ActiveRecord::Base
+class RSVP < ActiveRecord::Base
   belongs_to :guest
   belongs_to :event
 end

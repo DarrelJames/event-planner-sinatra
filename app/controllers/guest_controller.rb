@@ -22,8 +22,12 @@ class GuestController < ApplicationController
   end
 
   post '/guests' do
-    guest = current_user.guests.build(params[:guest])
-    if guest.save
+    # guest = current_user.guests.build(params[:guest])
+    binding.pry
+    guest = Guest.new(name: params[:guest][:name])
+    guest.user = current_user
+    eg = EventGuest.new(guest: guest, event_id: params[:guest][:event_id])
+    if guest.save && eg.save
       redirect to("/guests")
     end
   end
@@ -37,6 +41,8 @@ class GuestController < ApplicationController
   patch '/guests/:id' do
     guest = Guest.find_by(id: params[:id])
 
+
+    binding.pry
     if guest.update(params[:guest])
       redirect to("/guests/#{guest.id}")
     else
