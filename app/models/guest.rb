@@ -3,7 +3,8 @@ class Guest < ActiveRecord::Base
   include Slugify::InstanceMethods
 
   belongs_to :user
-  has_many :rsvp
+  has_many :rsvps
+  has_many :events, through: :rsvps
 
 
   validates :name, presence: true

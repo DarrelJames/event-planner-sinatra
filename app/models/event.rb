@@ -5,8 +5,8 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :venue
 
-  has_many :rsvp
-
+  has_many :rsvps
+  has_many :guests, through: :rsvps
 
   has_many :faqs
 

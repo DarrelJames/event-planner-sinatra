@@ -1,9 +1,10 @@
 class CreateGuestsEventsJoinTable < ActiveRecord::Migration[5.2]
   def change
-    create_table :rsvps, id: false do |t|
+    create_table :rsvps do |t|
+      t.string :attending
       t.belongs_to :event
       t.belongs_to :guest
-      t.boolean :attending
+
     end
   end
 end

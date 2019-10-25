@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 2019_10_22_012225) do
     t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
-  create_table "rsvps", id: false, force: :cascade do |t|
+  create_table "rsvps", force: :cascade do |t|
+    t.string "attending"
     t.integer "event_id"
     t.integer "guest_id"
-    t.boolean "attending"
     t.index ["event_id"], name: "index_rsvps_on_event_id"
     t.index ["guest_id"], name: "index_rsvps_on_guest_id"
   end
