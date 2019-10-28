@@ -12,13 +12,13 @@ class EventController < ApplicationController
 
   post '/events' do
     event = current_user.events.build(params[:event])
-    venue = Venue.new(params[:venue])
-    event.venue = venue
+    event.venue = Venue.find_or_create_by(params[:venue])
 
-    if venue.save && event.save
+
+    if event.venue.valid? && event.save
       redirect to("/events/#{event.slug}/manage")
     else
-      flash[:message] = event.errors.full_messages.to_sentence + venue.errors.full_messages.to_sentence
+      flash[:message] = event.errors.full_messages.to_sentence + event.venue.errors.full_messages.to_sentence
       redirect to('/events/new')
     end
   end
@@ -39,7 +39,8 @@ class EventController < ApplicationController
   patch '/events/:slug' do
     event = Event.find_by_slug(params[:slug])
 
-    if event.update(params[:event])
+    if event.user == current_user && event.update(params[:event])
+
       redirect to("/events/#{event.slug}/edit")
     else
       flash[:message] = event.errors.full_messages.to_sentence
@@ -50,6 +51,7 @@ class EventController < ApplicationController
 
   delete '/events/:slug' do
     event = Event.find_by_slug(params[:slug])
+
     if event.user == current_user
       event.destroy
       flash[:message] = "Successfully Deleted Event"
@@ -62,13 +64,12 @@ class EventController < ApplicationController
 
   get '/events/:slug/edit' do
     redirect_if_not_logged_in
+
     @event = Event.find_by_slug(params[:slug])
-    if @event.user == current_user
-      erb :"events/edit"
-    else
-      flash[:message] = "Sorry you don't have access to that page"
-      redirect to("/users")
-    end
+
+    redirect_if_not_authorized(@event)
+
+    erb :"events/edit"
   end
 
 

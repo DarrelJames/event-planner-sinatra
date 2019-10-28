@@ -33,5 +33,13 @@ class ApplicationController < Sinatra::Base
         redirect to('/login')
       end
     end
+
+    def redirect_if_not_authorized(object)
+      if current_user != object.user
+        flash[:message] = "Sorry you don't have access to that page"
+        redirect to('/users')
+      end
+    end
+
   end
 end
